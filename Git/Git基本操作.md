@@ -1,5 +1,7 @@
 Git基本操作
 
+[TOC]
+
 # 1. Git 介绍
 
 `Git`是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
@@ -195,3 +197,128 @@ git log
 ### 2.3.8 配置忽略列表
 
 我们可以创建`.gitignore`文件来配置git不再管理的文件
+
+
+
+## 2.4 操作远程仓库
+
+### 2.4.1 关联本地仓库和远程仓库
+
+在本地仓库目录下输入命令
+
+命令：git remote add <远端名称> <仓库路径>
+
+```bash
+git remote add gitee https://gitee.com/jidaojiuyou/study.git
+```
+
+![image-20201023161711089](img/image-20201023161711089.png)
+
+### 2.4.2 查看远程仓库
+
+命令：git remote
+
+```bash
+git remote
+```
+
+![image-20201023161759856](img/image-20201023161759856.png)
+
+查看具体的远程路径
+
+```bash
+git remote show gitee
+```
+
+![image-20201023161944760](img/image-20201023161944760.png)
+
+### 2.4.3 推送本地仓库到远程仓库
+
+命令： git push <远程名称> <本地名称>
+
+```bash
+git push gitee master
+```
+
+![image-20201023162330031](img/image-20201023162330031.png)
+
+### 2.4.4 从远程克隆
+
+命令：git clone <远程仓库地址>
+
+```bash
+git clone https://gitee.com/jidaojiuyou/study.git
+```
+
+![image-20201023162640805](img/image-20201023162640805.png)
+
+### 2.4.5 从远程仓库抓取/拉取
+
+命令：git fetch <远程仓库名> <本地分支名称>
+
+```bash
+git fetch gitee master
+```
+
+![image-20201023165946271](img/image-20201023165946271.png)
+
+**合并分支**
+
+命令：git merge <远程仓库名> <本地分支名称>
+
+```bash
+git merge gitee/master
+```
+
+![image-20201023170005551](img/image-20201023170005551.png)
+
+一般是直接使用拉取。
+
+**拉取**
+
+命令：git pull <远程仓库名> <本地分支名称>
+
+```bash
+git pull gitee master
+```
+
+![image-20201023170223369](img/image-20201023170223369.png)
+
+会自动合并
+
+
+
+---
+
+### 2.4.6 合并冲突
+
+TODO
+
+## 2.5 分支
+
+TODO
+
+### 2.5.1 查看分支
+
+TODO
+
+### 2.5.2 创建分支
+
+TODO
+
+### 2.5.3 切换分支
+
+TODO
+
+### 2.5.4 将分支推送到远程仓库
+
+TODO
+
+### 2.5.5 合并分支
+
+TODO
+
+### 2.5.6 删除分支
+
+TODO
+
