@@ -298,7 +298,7 @@ git pull gitee master
 
 ## 2.5 分支
 
-TODO TODO
+TODO
 
 ### 2.5.1 查看分支
 
