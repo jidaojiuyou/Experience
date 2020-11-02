@@ -1,8 +1,8 @@
-Linux基础
+# Linux基础
 
 [TOC]
 
-# 1 ls命令
+## 1 ls命令
 
 | 命令 | 说明 |
 | :--: | :--: |
@@ -13,11 +13,11 @@ Linux基础
 |`ls -lh`|以列表形式显示当前目录下所有的非隐藏文件的大小(K  M  T)|
 |`ls -alh`|以列表形式显示所有文件，包含隐藏文件的文件大小(K M T)|
 
-# 2 pwd命令
+## 2 pwd命令
 
 用来显示当前路径
 
-# 3 mkdir命令
+## 3 mkdir命令
 
 | 命令 | 说明 |
 | :--: | :--: |
@@ -25,7 +25,7 @@ Linux基础
 |`mkdir /root/mydemo`|使用绝对路径来创建|
 |`mkdir mydemo2`|使用相对对路径来创建|
 
-# 4 rm命令
+## 4 rm命令
 
 用于删除文件或目录
 
@@ -37,7 +37,7 @@ Linux基础
 |`rm -rf *.java`|可以删除当前目录下的所有.java文件|
 |`rm * -rf`|删除当前目录的所有内容|
 
-# 5 cd命令
+## 5 cd命令
    cd 命令可以进入一个目录
 
 | 命令 | 说明 |
@@ -48,19 +48,19 @@ Linux基础
 |`cd ../..`|回到上上一级目录|
 |`cd -`|可以在最近的两次目录之间切换|
 
-# 6 touch命令
+## 6 touch命令
 
 用于在当前路径创建一个空文件，也可以加上绝对路径在对应的位置创建
 
-# 7 mv命令
+## 7 mv命令
 
 常用于移动和重命名文件
 
-# 8 cat命令
+## 8 cat命令
 
 常用于显示文件内容
 
-# 9 cp命令
+## 9 cp命令
 
 | 命令 | 说明 |
 | :--: | :--: |
@@ -69,9 +69,9 @@ Linux基础
 |`cp user.txt /home/user2.txt`|将当前目录的user.txt 复制到/home目录，文件名改为user2.txt|
 |`cp /home/b.txt ./`|将指定目录里的文件复制到当前目录(.后边的/可以去掉)|
 
-# 10 压缩与解压缩
+## 10 压缩与解压缩
 
-## zip
+### zip
 
 压缩：将test目录压缩为test.zip
 
@@ -85,7 +85,7 @@ zip -r test.zip test
 unzip test.zip -d test2
 ```
 
-## tar.gz
+### tar.gz
 
 压缩：将test目录压缩为test.tar.gz
 
@@ -99,11 +99,11 @@ unzip test.zip -d test2
 tar -xvzf test.tar.gz
 ```
 
-# 11 find命令
+## 11 find命令
 
 查找文件
 
-# 12 grep命令
+## 12 grep命令
 
 查找文件内容
 
@@ -111,24 +111,24 @@ tar -xvzf test.tar.gz
 grep hello HelloWorld.java
 ```
 
-# 13 ps命令
+## 13 ps命令
 
 常用方式 `ps -ef`
 
-# 14 kill命令
+## 14 kill命令
 
 `kill -9 <pid>`
 
-# 15 useradd和userdel
+## 15 useradd和userdel
 
-## 添加用户
+### 添加用户
 
 useradd admin
 
-## 删除用户
+### 删除用户
 
 userdel -r admin
 
-## 修改用户密码
+### 修改用户密码
 
 passwd admin
