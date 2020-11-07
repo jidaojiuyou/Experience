@@ -11,7 +11,7 @@ show databases
 ## 1.2 新增数据库
 
 ```sql
-use <database>
+use 数据库名
 ```
 
 若不存在，也会成功切换。
@@ -21,7 +21,7 @@ use <database>
 ## 1.3 删除数据库
 
 ```sql
-use <database> ; //先选择数据
+use 数据库名; //先选择数据
 db.dropDatabase();//再删除选择的数据库
 ```
 
@@ -36,13 +36,13 @@ show collections;
 ## 2.2 新增集合
 
 ```
-db.createCollection("<集合>");
+db.createCollection("集合名");
 ```
 
 ## 2.3 删除集合
 
 ```sql
-db.集合.drop();
+db.集合名.drop();
 ```
 
 # 3 文档的增删改查
@@ -50,7 +50,7 @@ db.集合.drop();
 ## 3.1 新增
 
 ```sql
-db.集合.insert(<json数据>)
+db.集合名.insert(json数据)
 ```
 
 集合存在，则直接插入数据，集合不存在则隐式创建
@@ -82,7 +82,7 @@ for(let i=1;i<=10;i++){
 ## 3.2 查询
 
 ```sql
-db.集合.find(<条件>,[查询的列])
+db.集合名.find({查询的条件},{查询的列})
 ```
 
 - 条件：
@@ -167,7 +167,7 @@ db.c2.find({年龄:{$in:[5,7,8]}},{姓名:1})
 ## 3.3 修改
 
 ```sql
-db.集合.update(<条件>,<新数据>,{upsert: <boolean>,multi: <boolean>})
+db.集合名.update({条件},{新数据},{upsert: [true/false],multi: [true/false]})  //分别对应修改时目标不存在是否插入数据和是否修改多条数据
 ```
 
 ### 修改器
@@ -277,7 +277,7 @@ db.c3.update({姓名:"张三2"},{$set:{年龄:20}},{multi:true})
 ## 3.4 删除
 
 ```sql
-db.集合.remove(<条件>,{justOne:<boolean>})
+db.集合名.remove(条件,{justOne:[true/false]})  //是否只删除一条
 ```
 
 默认删除多条
@@ -285,5 +285,5 @@ db.集合.remove(<条件>,{justOne:<boolean>})
 ## 3.5 美化查询结果
 
 ```sql
-db.集合.find().pretty();
+db.集合名.find().pretty();
 ```
