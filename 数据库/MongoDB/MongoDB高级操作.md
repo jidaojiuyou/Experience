@@ -217,7 +217,9 @@ for(let i=1;i<=10000;i++){
 }
 ```
 
-### 练习1：给姓名添加普通索引
+### 普通索引
+
+#### 练习1：给姓名添加
 
 ```sql
 db.c2.createIndex({姓名:-1})
@@ -229,7 +231,7 @@ db.c2.createIndex({姓名:-1})
 
 第二个是我们创建的姓名索引
 
-### 练习2：删除姓名索引
+#### 练习2：删除姓名索引
 
 ```sql
 db.c2.dropIndex("姓名_-1")
@@ -239,10 +241,127 @@ db.c2.dropIndex("姓名_-1")
 
 此时只剩主键索引
 
-### 练习3：给姓名创建索引并起名姓名索引
+#### 练习3：给姓名创建索引并起名姓名索引
 
 ```sql
 db.c2.createIndex({姓名:1},{name:"姓名索引"})
 ```
 
 ![image-20201107113558953](img/image-20201107113558953.png)
+
+### 唯一索引
+
+```sql
+db.集合名.createIndex({索引的列:[1/-1]},{unique:列名})
+```
+
+#### 练习1：对姓名设置唯一索引
+
+```sql
+db.c2.createIndex({姓名:1},{unique:"姓名"})
+```
+
+![image-20201107115336053](img/image-20201107115336053.png)
+
+#### 练习2：插入两次{姓名:"张三"}
+
+```sql
+db.c2.insert({姓名:"张三"})
+```
+
+![image-20201107115204051](img/image-20201107115204051.png)
+
+第二次失败，因为姓名为张三的数据已经存在
+
+## MongoDB权限机制
+
+我们在本地使用MongoDB的时候，可以免输入账号和密码进行直接登录。在实际开发中，MongoDB有可能是在其他服务器，此时开启MongoDB的远程访问权限后，我们需要对MongoDB设置访问权限，防止数据泄露。
+
+### 创建用户
+
+```sql
+db.createUser({
+ user : 账号,
+ pwd: 密码,
+ roles : [{
+   role: 角色,
+   db: 所属数据库
+ }]
+})
+```
+
+#### 角色
+
+<table style="text-align:center">
+    <tr>
+        <th>角色种类</th>
+    	<th>角色名</th>
+    	<th>角色说明</th>
+    </tr>
+	<tr>
+        <td>超级用户角色</td>
+        <td>root</td>
+        <td>只在admin数据库中可用。超级账号，超级权限</td>
+	</tr>
+    <tr>
+        <td rowspan=2>数据库用户角色</td>
+        <td>read</td>
+        <td>允许用户读取指定数据库</td>
+	</tr>
+    <tr>
+        <td>readWrite</td>
+        <td>允许用户读写指定数据库</td>
+	</tr>
+    <tr>
+        <td rowspan=2>数据库管理角色</td>
+        <td>dbAdmin</td>
+        <td>允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile</td>
+	</tr>
+    <tr>
+        <td>userAdmin</td>
+        <td>允许用户向system.users集合写入数据，可以在指定数据库里创建、删除和管理用户</td>
+	</tr>
+	<tr>
+        <td rowspan=4>集群管理角色</td>
+        <td>clusterAdmin</td>
+        <td>只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限</td>
+	</tr>
+    <tr>
+        <td>clusterManager</td>
+        <td></td>
+	</tr>
+	<tr>
+        <td>clusterMonitor</td>
+        <td></td>
+	</tr>
+	<tr>
+        <td>hostManagerr</td>
+        <td></td>
+	</tr>
+    <tr>
+        <td rowspan=2>备份恢复角色</td>
+        <td>backup</td>
+        <td></td>
+	</tr>
+    <tr>
+        <td>restore</td>
+        <td></td>
+	</tr>
+	<tr>
+        <td rowspan=4>其他数据库角色</td>
+        <td>readAnyDatabase</td>
+        <td>只在admin数据库中可用，赋予用户所有数据库的读权限</td>
+	</tr>
+    <tr>
+        <td>readWriteAnyDatabase</td>
+        <td>只在admin数据库中可用，赋予用户所有数据库的读写权限</td>
+	</tr>
+	<tr>
+        <td>userAdminAnyDatabase</td>
+        <td>只在admin数据库中可用，赋予用户所有数据库的userAdmin权限</td>
+	</tr>
+	<tr>
+        <td>dbAdminAnyDatabase</td>
+        <td>只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限</td>
+	</tr>
+</table>
